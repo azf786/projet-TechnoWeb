@@ -13,12 +13,15 @@ import { HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProductService } from './services/product-service.service';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
   {path: 'auth/signin', component: SigninComponent},
-  {path: '', redirectTo: 'books',pathMatch:'full'},
-  {path: '**', redirectTo: 'books'}
+  {path: 'auth/signin', component: SigninComponent},
+  {path: 'home', component: SigninComponent},
+  {path: '', redirectTo: 'home',pathMatch:'full'},
+  {path: '**', redirectTo: 'home'}
 ]
 
 @NgModule({
@@ -27,7 +30,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
