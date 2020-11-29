@@ -7,8 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { SignoutComponent } from './auth/signout/signout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -28,15 +27,14 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     SigninComponent,
-    SignupComponent,
-    SignoutComponent
+    SignupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    RouterModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

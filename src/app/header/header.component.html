@@ -1,16 +1,19 @@
-<nav class="navbar navbar-default navbar-dark bg-dark">
+<nav class="navbar navbar-default navbar-dark" style="background-color: #116466;">
     <div class="container-fluid">   
-        <img src="./../../images/logo.png">
+        <img src="assets/images/logo.jpg" class="mr-5" style="width: 10%; height: 10%;">
         <form class="form-inline">
-            <input class="form-control mr-sm-4" type="search" placeholder="Rechercher un produit" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-          </form>
+            <div class="text-center mx-auto">
+                <label for="search" class="mb-2" style="font-weight: bold; font-style: italic;">Rechercher un produit</label>
+                <input class="form-control mr-4" type="search" placeholder="Rechercher un produit" aria-label="Search">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
+            </div>  
+        </form>
           <ul class="nav">
             <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
-                <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
+                <a class="nav-link text-white btn-primary mr-3" routerLink="auth/signup">Créer un compte</a>
             </li>
             <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
-                <a class="nav-link" routerLink="auth/signin">Connexion</a>
+                <a class="nav-link text-white btn-primary" routerLink="auth/signin">Connexion</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
                 <a class="nav-link" routerLink="user/myAccount" *ngIf="isAuth" style="cursor: pointer;">Mon compte</a>

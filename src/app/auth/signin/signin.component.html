@@ -1,1 +1,19 @@
-<p>signin works!</p>
+<div class="pb-5 pt-5" style="background-image: url(assets/images/laptop.jpg);height: 1000px">
+    <div class="col-sm-5 mx-auto card mt-5">
+        <h2 class="text-center"> Connexion</h2>
+        <form [formGroup]="signIn" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn text-center" type="submit" [disabled]="signIn.invalid">Connexion</button>
+            </div>
+        </form>
+        <p class="text-danger">{{errorMessage}}</p>
+    </div>
+</div>
