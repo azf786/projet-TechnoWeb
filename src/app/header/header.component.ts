@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isAuth: boolean;
 
-  constructor() { }
+  constructor() { this.isAuth = true; }
 
   ngOnInit(): void {
   }
