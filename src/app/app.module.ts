@@ -16,6 +16,7 @@ import { ProductService } from './services/product-service.service';
 import { ProduitFormComponent } from './produit/produit-form/produit-form.component';
 import {CommonModule} from '@angular/common';
 import { ProduitListComponent } from './produit/produit-list/produit-list.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
@@ -24,6 +25,10 @@ const appRoutes: Routes = [
   {path: 'produits/new', component: ProduitFormComponent},
   {path: '', redirectTo: 'books',pathMatch:'full'},
   {path: '**', redirectTo: 'books'}
+  {path: 'auth/signin', component: SigninComponent},
+  {path: 'home', component: SigninComponent},
+  {path: '', redirectTo: 'home',pathMatch:'full'},
+  {path: '**', redirectTo: 'home'}
 ]
 
 @NgModule({
@@ -34,7 +39,8 @@ const appRoutes: Routes = [
     SigninComponent,
     SignupComponent,
     ProduitFormComponent,
-    ProduitListComponent
+    ProduitListComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

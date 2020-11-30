@@ -11,14 +11,14 @@ export class SigninComponent implements OnInit {
 
   signIn: FormGroup;
   errorMessage: string;
-
+  
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router) { }
 
   ngOnInit(){
     this.signIn = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required,Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]]
     });
   }
@@ -26,9 +26,9 @@ export class SigninComponent implements OnInit {
   onSubmit(){
     const email = this.signIn.get('email').value;
     const password = this.signIn.get('password').value;
-    this.authService.signInUser(email, password).then(
+    this.authService.signInUser(email,password).then(
       () => {
-        this.router.navigate(['/produits', 'new']);
+        this.router.navigate(['/']);
       },
       (error) => {
         this.errorMessage = error;
