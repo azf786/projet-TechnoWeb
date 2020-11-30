@@ -13,10 +13,15 @@ import { HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProductService } from './services/product-service.service';
+import { ProduitFormComponent } from './produit/produit-form/produit-form.component';
+import {CommonModule} from '@angular/common';
+import { ProduitListComponent } from './produit/produit-list/produit-list.component';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
   {path: 'auth/signin', component: SigninComponent},
+  {path: 'produits/listProduits', component: ProduitListComponent},
+  {path: 'produits/new', component: ProduitFormComponent},
   {path: '', redirectTo: 'books',pathMatch:'full'},
   {path: '**', redirectTo: 'books'}
 ]
@@ -27,9 +32,12 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ProduitFormComponent,
+    ProduitListComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

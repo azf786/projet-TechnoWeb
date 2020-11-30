@@ -116,6 +116,9 @@
               "src/assets"
             ],
             "styles": [
+              {
+                "input": "./node_modules/bootstrap/dist/css/bootstrap.css"
+              },
               "src/styles.scss"
             ],
             "scripts": []
@@ -147,6 +150,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "projet-TechnoWeb"
+    }
+  },
+  "defaultProject": "projet-TechnoWeb",
+  "cli": {
+    "analytics": false
+  }
 }

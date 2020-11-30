@@ -12,15 +12,16 @@ export class AppComponent {
   title = 'projet-TechnoWeb';
   constructor(){
     var firebaseConfig = {
-    apiKey: "AIzaSyB8wR3lQFujvdHKWkaxX8K2lz86Js4412g",
-    authDomain: "technostar-9ac57.firebaseapp.com",
-    databaseURL: "https://technostar-9ac57.firebaseio.com",
-    projectId: "technostar-9ac57",
-    storageBucket: "technostar-9ac57.appspot.com",
-    messagingSenderId: "1025564886141",
-    appId: "1:1025564886141:web:28c47e7c38cded82de1d14"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+      apiKey: "AIzaSyDtCMUjSe5ZiE-uTm4D0DrOyIVYuSYTS1U",
+      authDomain: "technostar-6e7e2.firebaseapp.com",
+      databaseURL: "https://technostar-6e7e2.firebaseio.com",
+      projectId: "technostar-6e7e2",
+      storageBucket: "technostar-6e7e2.appspot.com",
+      messagingSenderId: "566302676966",
+      appId: "1:566302676966:web:99f1189545ec80722be827",
+      measurementId: "G-R4C3596KKQ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
   }
 }

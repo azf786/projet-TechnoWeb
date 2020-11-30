@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>Enregistrer un nouveau livre</h2>
+    <form [formGroup]="laptopForm" (ngSubmit)="onSaveLaptops()">
+      <div class="form-group">
+        <label for="prix">Prix</label>
+        <input type="number" class="form-control" id="prix" formControlName="prix">
+      </div>
+      <div class="form-group">
+        <label for="quantity">quantité</label>
+        <input type="number" class="form-control" id="quantity" formControlName="quantity">
+      </div>
+      <div class="form-group">
+        <label for="marque">Marque</label>
+        <input type="text" class="form-control" id="marque" formControlName="marque">
+      </div>
+      <div class="form-group">
+        <label for="model">Model</label>
+        <input type="text" class="form-control" id="model" formControlName="model">
+      </div>
+      <div class="form-group">
+        <label for="serie">Serie</label>
+        <input type="text" class="form-control" id="serie" formControlName="serie">
+      </div>
+      <div class="form-group">
+        <label for="couleur">Couleur</label>
+        <input type="text" class="form-control" id="couleur" formControlName="couleur">
+      </div>
+      <div class="form-group">
+        <label for="cpu">CPU</label>
+        <select class="form-control" id="cpu" formControlName="cpu">
+          <option *ngFor="let cpu of cpus; let i = index" value="{{cpu}}">{{cpu}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gpu">GPU</label>
+        <select class="form-control" id="gpu" formControlName="gpu">
+          <option *ngFor="let gpu of gpus" value="{{gpu}}">{{gpu}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ram">RAM</label>
+        <input type="text" class="form-control" id="ram" formControlName="ram">
+      </div>
+      <div class="form-group">
+        <label for="typeDisque">Type Disque</label>
+        <input type="text" class="form-control" id="typeDisque" formControlName="typeDisque">
+      </div>
+      <div class="form-group">
+        <label for="tailleDisque">Taille Disque</label>
+        <input type="text" class="form-control" id="tailleDisque" formControlName="tailleDisque">
+      </div>
+      <div class="form-group">
+        <label for="tailleEcran">Taille Ecran</label>
+        <select class="form-control" id="tailleEcran" formControlName="tailleEcran">
+          <option *ngFor="let tailleEcran of tailleEcrans" value="{{tailleEcran}}">{{tailleEcran}}</option>
+        </select>
+      </div>
+      <div formArrayName="connectivity">
+        <h3>Connectivités</h3>
+        <div class="form-group" *ngFor="let control of getConnectivity().controls; let i = index">
+          <input type="text" class="form-control" [formControlName]="i">
+        </div>
+        <button type="button" class="btn btn-success" (click)="onAddConnectivity()">Ajouter une connectivité</button>
+      </div>
+      <div class="form-group">
+        <label for="typePort">Type Port</label>
+        <select class="form-control" id="typePort" formControlName="typePort">
+          <option *ngFor="let typePort of typePorts" value="{{typePort}}">{{typePort}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nbrePort">Nombre de ports</label>
+        <input type="text" class="form-control" id="nbrePort" formControlName="nbrePort">
+      </div>
+      <div class="form-group">
+        <label for="dimension">Dimensions</label>
+        <input type="text" class="form-control" id="dimension" formControlName="dimension">
+      </div>
+      <div class="form-group">
+        <label for="poids">Poids</label>
+        <input type="text" class="form-control" id="poids" formControlName="poids">
+      </div>
+      <div formArrayName="description">
+        <h3>Descriptions</h3>
+        <div class="form-group" *ngFor="let control of getDescriptions().controls; let i = index">
+          <input type="text" class="form-control" [formControlName]="i">
+        </div>
+        <button type="button" class="btn btn-success" (click)="onAddDescription()">Ajouter une description</button>
+      </div>
+      <div class="form-group">
+        <h4>Ajouter une photo </h4>
+        <input type="file" (change)="detectFile($event)" class="form-control" accept="image/*">
+        <p class="text-success" *ngIf="fileUploaded">Fichier chargé</p>
+      </div>
+      <button class="btn btn-success" type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>
