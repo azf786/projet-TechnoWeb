@@ -22,16 +22,13 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
   {path: 'auth/signin', component: SigninComponent},
-<<<<<<< Updated upstream
   {path: 'produits/listProduits', component: ProduitListComponent},
   {path: 'produits/new', component: ProduitFormComponent},
   {path: '', redirectTo: 'books',pathMatch:'full'},
-  {path: '**', redirectTo: 'books'}
+  {path: '**', redirectTo: 'books'},
   {path: 'auth/signin', component: SigninComponent},
   {path: 'home', component: SigninComponent},
-=======
   {path: 'home', component: HomeComponent},
->>>>>>> Stashed changes
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: '**', redirectTo: 'home'}
 ]
