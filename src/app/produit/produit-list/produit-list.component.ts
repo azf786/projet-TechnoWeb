@@ -3,7 +3,7 @@ import {Laptop} from '../../models/Laptop.model';
 import {Subscription} from 'rxjs';
 import {ProductService} from '../../services/product-service.service';
 import {Router} from '@angular/router';
-import {Searchable} from '../../models/Searchable.model';
+
 
 @Component({
   selector: 'app-produit-list',

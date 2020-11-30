@@ -1,10 +1,9 @@
-<div class="row" style="margin: 50px">
-  <div class="col-xs-12">
+  <div class="text-center">
     <h2>Recherches</h2>
-    <div class="list-group container">
+    <div class="list-group ml-5">
       <div class="row">
         <div class="col" *ngFor="let laptop of laptops; let i = index">
-          <button class="list-group-item" >
+          <button class="list-group-item mb-3" >
             <img src="{{laptop.photos[0]}}" style="width: 270px; height: 200px">
             <h5>{{laptop.marque}} {{laptop.model}}</h5>
             <h3 style="color: red">{{laptop.prix}} €</h3>
@@ -13,4 +12,3 @@
       </div>
     </div>
   </div>
-</div>

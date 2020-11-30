@@ -27,7 +27,6 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'books',pathMatch:'full'},
   {path: '**', redirectTo: 'books'},
   {path: 'auth/signin', component: SigninComponent},
-  {path: 'home', component: SigninComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: '**', redirectTo: 'home'}
