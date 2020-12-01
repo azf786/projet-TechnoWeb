@@ -17,6 +17,7 @@ import { ProduitFormComponent } from './produit/produit-form/produit-form.compon
 import {CommonModule} from '@angular/common';
 import { ProduitListComponent } from './produit/produit-list/produit-list.component';
 import { HomeComponent } from './home/home.component';
+import { NgbCarouselConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -50,12 +51,14 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
   ],
   providers: [
     AuthService,
     ProductService,
-    AuthGuardService
+    AuthGuardService,
+    NgbCarouselConfig
   ],
   bootstrap: [AppComponent]
 })
