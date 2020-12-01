@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <h2>{{laptop.model}}</h2>
+        </div>
+        <div class="col-4">
+            <p>{{laptop.description}}</p>
+        </div>
+        <div class="col-4">
+            <div class="container" style="background-color: #116466;">
+                <h3 class="mb-5"> {{laptop.prix}}</h3>
+                <label for="quantity">Quantité</label>
+                <input type="number" class="form-control" id="quantity" formControlName="quantity">
+                <button class="btn-primary"> Ajouter au panier</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ import {CommonModule} from '@angular/common';
 import { ProduitListComponent } from './produit/produit-list/produit-list.component';
 import { HomeComponent } from './home/home.component';
 import { NgbCarouselConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     SignupComponent,
     ProduitFormComponent,
     ProduitListComponent,
-    HomeComponent
+    HomeComponent,
+    SingleProduitComponent
   ],
   imports: [
     CommonModule,
