@@ -18,9 +18,15 @@ export class ProduitListComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.laptopSubscription = this.productService.laptopSubject.subscribe(
+    this.laptopSubscription = this.productService.laptopSearchSubject.subscribe(
       (laptops: Laptop[]) => {
         this.laptops = laptops;
+        for (let i = 0; i < this.laptops.length; i++) {
+          if (this.laptops[i].visible === false) {
+            console.log('removing');
+            this.laptops[i].visible = true;
+          }
+        }
       }
     );
     this.productService.getLaptops();

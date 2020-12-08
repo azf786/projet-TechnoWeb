@@ -58,9 +58,7 @@ export class ProductService {
         }
       }
       for (let i = 0; i < this.laptops.length; i++) {
-        if (this.laptops[i].marque === 'HP') {
-          this.laptopsSearch.push(this.laptops[i]);
-        }
+        this.laptopsSearch.push(this.laptops[i]);
       }
       this.emitLaptopsSearch();
       this.emitLaptops();
@@ -224,18 +222,24 @@ export class ProductService {
   }
 
   update() {
-    // tslint:disable-next-line:prefer-for-of
+    this.laptopsSearch = [];
     for (let i = 0; i < this.laptops.length; i++) {
-      if (this.marques.indexOf(this.laptops[i].marque, 0) === -1 ||
-        this.cpus.indexOf(this.laptops[i].cpu, 0) === -1 ||
-        this.tailleEcrans.indexOf(this.laptops[i].tailleEcran, 0) === -1 ||
-      this.prixEstInf(this.laptops[i].prix) ||
-      this.prixEstSup(this.laptops[i].prix)) {
+      if (this.nonConforme(i)) {
         this.laptops[i].visible = false;
       }else {
         this.laptops[i].visible = true;
+        this.laptopsSearch.push(this.laptops[i]);
       }
     }
+    this.emitLaptopsSearch();
+  }
+
+  private nonConforme(i: number) {
+    return this.marques.indexOf(this.laptops[i].marque, 0) === -1 ||
+      this.cpus.indexOf(this.laptops[i].cpu, 0) === -1 ||
+      this.tailleEcrans.indexOf(this.laptops[i].tailleEcran, 0) === -1 ||
+      this.prixEstInf(this.laptops[i].prix) ||
+      this.prixEstSup(this.laptops[i].prix);
   }
 
   updateSearch() {

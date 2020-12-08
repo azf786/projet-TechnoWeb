@@ -7,7 +7,7 @@
       <h2>Recherches</h2>
       <div class="list-group ml-5">
         <div class="row">
-          <div class="col" *ngFor="let laptop of laptops; let i = index;">
+          <div class="col" *ngFor="let laptop of laptops; let i = index;" size="width = 0">
             <button class="list-group-item mb-3" *ngIf="laptop.visible" (click)="update(i)">
               <img src="{{laptop.photos[0]}}" style="width: 270px; height: 200px">
               <h5>{{laptop.marque}} {{laptop.model.substring(0, 18)}}...</h5>
