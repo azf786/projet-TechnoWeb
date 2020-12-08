@@ -24,7 +24,10 @@ export class ProduitListComponent implements OnInit, OnDestroy {
       }
     );
     this.productService.getLaptops();
+    this.productService.removeInvisible();
     this.productService.emitLaptops();
+    this.productService.searchLaptop('HP');
+    this.productService.emitLaptopsSearch();
   }
 
 
@@ -40,4 +43,18 @@ export class ProduitListComponent implements OnInit, OnDestroy {
     this.laptopSubscription.unsubscribe();
   }
 
+  getVisible(visible: boolean){
+    if (visible){
+      return 'visible';
+    }
+    else {
+      return 'invisible';
+    }
+  }
+
+  update(id: number) {
+    console.log(this.laptops.length);
+    this.productService.invisible(id);
+    console.log(this.laptops.length);
+  }
 }

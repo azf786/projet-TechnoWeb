@@ -1,0 +1,23 @@
+.visible{
+  max-width: 320px;
+  max-height: 330px
+}
+
+.visible img{
+  width: 270px;
+  height: 200px;
+}
+.invisible {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.invisible img{
+  width: 0;
+  height: 0;
+}

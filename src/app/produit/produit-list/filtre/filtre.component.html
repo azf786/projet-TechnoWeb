@@ -1,0 +1,55 @@
+<div style="margin: 100px; width: 270px" id="filtre">
+  <div class="text-center" style="margin-bottom: 20px">
+    <h2>Filtre</h2>
+  </div>
+  <div class="col" class="text-center">
+    <div class="col">
+      <h5> Marque </h5>
+      <div class="text-left list" style="margin-left: 75px">
+        <div *ngFor="let marque of marques" >
+          <input type="checkbox" value="{{marque}}" (change)="marqueChange($event)">
+          <label>{{marque}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h5> Prix </h5>
+      <div class="text-center">
+        <form [formGroup]="prixForm" (ngSubmit)="prixChange()" class="text-center">
+          <div class="row text-center">
+            <div class="form-group col">
+              <label for="prixInf">Min</label>
+              <input type="number" id="prixInf" class="form-control" formControlName="prixInf">
+            </div>
+            <div class="form-group col">
+              <label for="prixSup">Max</label>
+              <input type="number" id="prixSup" class="form-control" formControlName="prixSup">
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button class="btn btn-primary btn text-center" type="submit" [disabled]="prixInvalid()">Voir</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <h5> CPU </h5>
+      <div class="text-left list" style="margin-left: 95px">
+        <div class="row" *ngFor="let cpu of cpus">
+          <input type="checkbox" value="{{cpu}}" (change)="cpuChange($event)">
+          <label>{{cpu}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="col" >
+      <h5> Taille Ecran </h5>
+      <div class="text-left list" style="margin-left: 98px">
+        <div class="row" *ngFor="let taille of tailleEcran">
+          <input type="checkbox" value="{{taille}}" (change)="tailleEcranChange($event)">
+          <label>{{taille}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
