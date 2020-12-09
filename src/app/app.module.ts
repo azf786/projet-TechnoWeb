@@ -22,6 +22,9 @@ import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 import { FiltreComponent } from './produit/produit-list/filtre/filtre.component';
 import { MyAccountComponent } from './user/my-account/my-account.component';
+import {CarteCreditComponent} from './acheter/carte-credit/carte-credit.component';
+import {AcheterComponent} from './acheter/acheter.component';
+import {PanierService} from './services/panier-service.service';
 
 
 const appRoutes: Routes = [
@@ -51,9 +54,7 @@ const appRoutes: Routes = [
     HomeComponent,
     SingleProduitComponent,
     FiltreComponent,
-    AcheterComponent,
-    CarteCreditComponent
-    FiltreComponent,
+    CarteCreditComponent,
     MyAccountComponent
   ],
   imports: [
