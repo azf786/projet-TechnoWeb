@@ -3,6 +3,7 @@ import {Laptop} from '../../models/Laptop.model';
 import {Subscription} from 'rxjs';
 import {ProductService} from '../../services/product-service.service';
 import {Router} from '@angular/router';
+import {PanierService} from '../../services/panier-service.service';
 
 
 @Component({
@@ -12,12 +13,13 @@ import {Router} from '@angular/router';
 })
 export class ProduitListComponent implements OnInit, OnDestroy {
 
-  laptops: Laptop[];
+  laptops: Laptop[] = [];
   laptopSubscription: Subscription;
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private panierService: PanierService) { }
 
   ngOnInit(): void {
+    this.productService.laptopsSearch = [];
     this.laptopSubscription = this.productService.laptopSearchSubject.subscribe(
       (laptops: Laptop[]) => {
         this.laptops = laptops;
@@ -30,9 +32,7 @@ export class ProduitListComponent implements OnInit, OnDestroy {
       }
     );
     this.productService.getLaptops();
-    this.productService.removeInvisible();
     this.productService.emitLaptops();
-    this.productService.searchLaptop('HP');
     this.productService.emitLaptopsSearch();
   }
 
@@ -45,7 +45,7 @@ export class ProduitListComponent implements OnInit, OnDestroy {
   onViewLaptop(id: number) {
     this.router.navigate(['/produits', 'view', id]);
   }
-  
+
   ngOnDestroy() {
     this.laptopSubscription.unsubscribe();
   }

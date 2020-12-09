@@ -1,0 +1,60 @@
+<div>
+  <div>
+    <div *ngIf="produitsPanier.length === 0">
+      <h2 style="text-align: center">Votre panier est vide </h2>
+    </div>
+    <div class="row" style="margin-left: 50px">
+      <div class="col-9">
+        <div *ngFor="let produitPanier of produitsPanier; let i = index" class="row produit"n style="margin-top: 20px;
+         padding-top: 10px; padding-bottom: 10px">
+          <div class="col-3 text-left" style="">
+            <img src="{{produitPanier.laptop.photos[0]}}" style="width: 300px; height: 200px">
+          </div>
+          <div class="col-9 text-left">
+            <div class="row">
+              <div class="col-9">
+                <p> <strong>Marque:</strong> {{produitPanier.laptop.marque}}</p>
+                <p> <strong>Model:</strong> {{produitPanier.laptop.model}}</p>
+                <p> <strong>CPU:</strong> {{produitPanier.laptop.cpu}}</p>
+              </div>
+              <div class="col-3 text-right">
+                <h3 style="font-size: 40px; color: red">{{produitPanier.laptop.prix}} €</h3>
+              </div>
+            </div>
+            <div class="row text-right">
+              <div class="col-9"></div>
+              <div class="col-3 text-right">
+                <div class="row">
+                  <div class="align-bottom" style="padding: 5px; padding-top: 15px">
+                    <button id="supprimer" (click)="supprimer(i)" style="color: red">Supprimer</button>
+                  </div>
+                  <div style="padding: 5px">
+                    <button class="btn btn-success" style="padding: 5px; font-size: 20px" (click)="ajouterQauntite(i)">+</button>
+                  </div>
+                  <div style="padding: 5px; padding-top: 10px">
+                    <h4>{{this.produitPanier.quantity}}</h4>
+                  </div>
+                  <div style="padding: 5px">
+                    <button class="btn btn-danger" style="padding: 5px; font-size: 20px" (click)="reduireQauntite(i)"
+                    [disabled]="produitPanier.quantity === 1">-</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 text-right" style="margin-top: 20px">
+        <div class="text-center">
+          <h3>Récapulatif</h3>
+          <div class="text-center">
+            <p *ngFor="let produit of produitsPanier; let i = index">{{produit.quantity}} x {{produit.laptop.model}} .......
+              {{produit.quantity*produit.laptop.prix}}</p>
+            <hr>
+            <p style="font-size: 30px"><strong style="color: red; font-size: 30px">Total</strong>    {{getTotal()}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

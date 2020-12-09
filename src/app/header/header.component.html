@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default navbar-dark" style="background-color: #116466;">
-    <div class="container-fluid">   
+    <div class="container-fluid">
         <img routerLinkActive="active" routerLink="/home" src="assets/images/logo.jpg" class="mr-5" style="width: 10%; height: 10%;cursor: pointer;">
         <form class="form-inline">
             <div class="text-center mx-auto">
                 <label for="search" class="mb-2" style="font-weight: bold; font-style: italic;">Rechercher un produit</label>
                 <input class="form-control mr-4" type="search" placeholder="Rechercher un produit" aria-label="Search">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Rechercher</button>
-            </div>  
+                <button class="btn btn-primary my-2 my-sm-0" (click)="rechercher()"  type="submit">Rechercher</button>
+            </div>
         </form>
           <ul class="nav">
             <li routerLinkActive="active" class="nav-item" *ngIf="!isAuth">
@@ -20,6 +20,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="onSignOut()" *ngIf="isAuth" style="cursor: pointer;">Déconnexion</a>
+            </li>
+            <li>
+              <a class="nav-link" (click)="panier()">Panier</a>
             </li>
         </ul>
     </div>

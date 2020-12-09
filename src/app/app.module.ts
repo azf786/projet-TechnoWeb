@@ -20,6 +20,9 @@ import { HomeComponent } from './home/home.component';
 import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 import { FiltreComponent } from './produit/produit-list/filtre/filtre.component';
+import { AcheterComponent } from './acheter/acheter.component';
+import {PanierService} from './services/panier-service.service';
+import { CarteCreditComponent } from './acheter/carte-credit/carte-credit.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +32,7 @@ const appRoutes: Routes = [
   {path: 'produits/new', component: ProduitFormComponent},
   {path: 'produits/view/:id', component: SingleProduitComponent},
   {path: 'auth/signin', component: SigninComponent},
+  {path: 'produits/acheter', component: AcheterComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: '**', redirectTo: 'home'}
@@ -36,6 +40,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    AcheterComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -45,7 +50,9 @@ const appRoutes: Routes = [
     ProduitListComponent,
     HomeComponent,
     SingleProduitComponent,
-    FiltreComponent
+    FiltreComponent,
+    AcheterComponent,
+    CarteCreditComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +68,7 @@ const appRoutes: Routes = [
     AuthService,
     ProductService,
     AuthGuardService,
+    PanierService,
   ],
   bootstrap: [AppComponent]
 })

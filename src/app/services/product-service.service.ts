@@ -66,7 +66,7 @@ export class ProductService {
   }
 
   getSingleLaptop(id: number) {
-    return new Promise(
+    /*return new Promise(
       (resolve, reject) => {
         firebase.database().ref('/laptops/' + id).once('value').then(
           (data) => {
@@ -77,7 +77,8 @@ export class ProductService {
           }
         );
       }
-    );
+    );*/
+    return this.laptopsSearch[id];
   }
 
   createNewLaptop(newLaptop: Laptop) {

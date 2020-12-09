@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import firebase from 'firebase/app';
 import '@firebase/auth';
 import '@firebase/database';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,9 @@ import '@firebase/database';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
+
   isAuth: boolean;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(){
       firebase.auth().onAuthStateChanged(
@@ -31,4 +32,11 @@ export class HeaderComponent implements OnInit {
     this.authService.signOutUser();
   }
 
+  rechercher() {
+    this.router.navigate(['/produits', 'listProduits']);
+  }
+
+  panier() {
+    this.router.navigate(['/produits', 'acheter']);
+  }
 }
