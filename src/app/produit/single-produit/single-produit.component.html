@@ -1,17 +1,46 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-4">
-            <h2>{{laptop.model}}</h2>
+        <div class="col-5 ml-5">
+            <h2>{{laptop.marque}} {{laptop.model.substring(0, 18)}}</h2>
+            <ngb-carousel style="background-color: #FFCB9A;">
+                <ng-template ngbSlide>
+                    <div class="wrapper" style="width:760px; height:600px;background-color: white;">
+                        <h2 class="text-center">Défilez pour voir les images</h2>
+                        <img src="assets/images/logo.png" style="width:760px; height:600px;">
+                    </div>
+                </ng-template>
+                <ng-template ngbSlide *ngFor="let photo of laptop.photos; let i = index;">
+                    <div class="wrapper">
+                        <img src="{{photo}}" style="width:760px; height:600px;">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
         </div>
-        <div class="col-4">
+        <div class="col-3">
+            <h1>Description du produit</h1>
             <p>{{laptop.description}}</p>
+            <p><b>Marque :</b> {{laptop.marque}}</p>
+            <p><b>Modèle :</b> {{laptop.model}}</p>
+            <p><b>Série :</b> {{laptop.serie}}</p>
+            <p><b>Couleur :</b> {{laptop.couleur}}</p>
+            <p><b>CPU :</b> {{laptop.cpu}}</p>
+            <p><b>GPU :</b> {{laptop.gpu}}</p>
+            <p><b>RAM :</b> {{laptop.ram}}</p>
+            <p><b>Type Disque :</b> {{laptop.typeDisque}}</p>
+            <p><b>Taille Disque:</b> {{laptop.tailleDisque}}</p>
+            <p><b>Taille Ecran :</b> {{laptop.tailleEcran}}</p>
+            <p><b>Dimension :</b> {{laptop.dimension}}</p>
+            <p><b>Nombre de ports:</b> {{laptop.nbrePort}}</p>
         </div>
-        <div class="col-4">
-            <div class="container" style="background-color: #116466;">
-                <h3 class="mb-5"> {{laptop.prix}}</h3>
-                <label for="quantity">Quantité</label>
+        <div class="col-3 mt-3 align-self-center">
+            <div class="container pb-3" style="background-color: #116466;">
+                <h3 class="text-center">{{laptop.model}}</h3>
+                <h4>Quantité</h4>
                 <input type="number" class="form-control" id="quantity" formControlName="quantity">
-                <button class="btn-primary"> Ajouter au panier</button>
+                <h3 class="mb-5"> {{laptop.prix}} €</h3>
+                <div class="text-center">
+                    <button class="btn-primary align-center"> Ajouter au panier</button>
+                </div>
             </div>
         </div>
     </div>

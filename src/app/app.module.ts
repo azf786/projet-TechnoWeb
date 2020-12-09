@@ -17,7 +17,7 @@ import { ProduitFormComponent } from './produit/produit-form/produit-form.compon
 import {CommonModule} from '@angular/common';
 import { ProduitListComponent } from './produit/produit-list/produit-list.component';
 import { HomeComponent } from './home/home.component';
-import {NgbCarouselConfig, NgbCarouselModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 import { FiltreComponent } from './produit/produit-list/filtre/filtre.component';
 
@@ -27,12 +27,10 @@ const appRoutes: Routes = [
   {path: 'auth/signin', component: SigninComponent},
   {path: 'produits/listProduits', component: ProduitListComponent},
   {path: 'produits/new', component: ProduitFormComponent},
-  {path: '', redirectTo: 'books',pathMatch:'full'},
-  {path: '**', redirectTo: 'books'},
+  {path: 'produits/view/:id', component: SingleProduitComponent},
   {path: 'auth/signin', component: SigninComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
-  {path: 'home', component: SigninComponent},
   {path: '**', redirectTo: 'home'}
 ]
 
@@ -46,6 +44,7 @@ const appRoutes: Routes = [
     ProduitFormComponent,
     ProduitListComponent,
     HomeComponent,
+    SingleProduitComponent,
     FiltreComponent
   ],
   imports: [

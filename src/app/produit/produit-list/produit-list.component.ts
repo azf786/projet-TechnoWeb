@@ -45,6 +45,7 @@ export class ProduitListComponent implements OnInit, OnDestroy {
   onViewLaptop(id: number) {
     this.router.navigate(['/produits', 'view', id]);
   }
+  
   ngOnDestroy() {
     this.laptopSubscription.unsubscribe();
   }
