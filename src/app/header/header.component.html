@@ -16,10 +16,10 @@
                 <a class="nav-link text-white btn-primary" routerLink="auth/signin">Connexion</a>
             </li>
             <li routerLinkActive="active" class="nav-item">
-                <a class="nav-link" routerLink="user/myAccount" *ngIf="isAuth" style="cursor: pointer;">Mon compte</a>
+                <a class="nav-link text-white btn-primary mr-3" routerLink="user/myAccount/" *ngIf="isAuth" style="cursor: pointer;">Mon compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" (click)="onSignOut()" *ngIf="isAuth" style="cursor: pointer;">Déconnexion</a>
+                <a class="nav-link btn-primary" (click)="onSignOut()" *ngIf="isAuth" style="cursor: pointer;">Déconnexion</a>
             </li>
             <li>
               <a class="nav-link" (click)="panier()">Panier</a>

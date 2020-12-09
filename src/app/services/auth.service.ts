@@ -40,4 +40,8 @@ export class AuthService {
   signOutUser(){
     firebase.auth().signOut();
   }
+
+  getCurrentUserId(): string{
+    return firebase.auth().currentUser.uid;
+  }
 }

@@ -37,6 +37,7 @@ export class ProductService {
   emitLaptopsSearch() {
     this.laptopSearchSubject.next(this.laptopsSearch);
   }
+  
   saveLaptops() {
     firebase.database().ref('/laptops').set(this.laptops);
   }
