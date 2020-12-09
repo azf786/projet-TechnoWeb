@@ -12,6 +12,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
 import { ProductService } from './services/product-service.service';
 import { ProduitFormComponent } from './produit/produit-form/produit-form.component';
 import {CommonModule} from '@angular/common';
@@ -20,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 import { FiltreComponent } from './produit/produit-list/filtre/filtre.component';
+import { MyAccountComponent } from './user/my-account/my-account.component';
 
 
 const appRoutes: Routes = [
@@ -28,7 +30,7 @@ const appRoutes: Routes = [
   {path: 'produits/listProduits', component: ProduitListComponent},
   {path: 'produits/new', component: ProduitFormComponent},
   {path: 'produits/view/:id', component: SingleProduitComponent},
-  {path: 'auth/signin', component: SigninComponent},
+  {path: 'user/myAccount/:id', component: MyAccountComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: '**', redirectTo: 'home'}
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     ProduitListComponent,
     HomeComponent,
     SingleProduitComponent,
-    FiltreComponent
+    FiltreComponent,
+    MyAccountComponent
   ],
   imports: [
     CommonModule,
@@ -55,12 +58,13 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
-    NgbCarouselModule
+    NgbCarouselModule,
   ],
   providers: [
     AuthService,
     ProductService,
     AuthGuardService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })
