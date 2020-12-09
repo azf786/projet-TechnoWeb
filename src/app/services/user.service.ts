@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import{Client} from 'src/app/models/Client.model';
 import firebase from 'firebase/app';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import firebase from 'firebase/app';
 export class UserService {
   
   clients: Client[] = [];
+  clientCourant: Client;
   noms: string[] = [];
   prenoms: string[] = [];
   telephones: string[] = [];
@@ -19,9 +21,9 @@ export class UserService {
   complements: string[] = [];
   ids: string[] = [];
   userSubject = new Subject<Client[]>();
+  userSearch: Client;
   
-  
-  constructor() { }
+  constructor(authService : AuthService) {}
   
   emitClients() {
     this.userSubject.next(this.clients);
@@ -38,20 +40,15 @@ export class UserService {
     });
   }
   
-  getSingleClient(email: string) {
-    return new Promise(
-      (resolve, reject) => {
-        firebase.database().ref('/clients/' + email).once('value').then(
-          (data) => {
-            resolve(data.val());
-          },
-          (error) => {
-            reject(error);
-          }
-          );
-        }
-        );
+  getSingleClient(email: string) : Client {
+    for (let i = 0; i < this.clients.length; i++) {
+      if (this.clients[i].email == email) {
+        this.userSearch = this.clients[i];
       }
+    }
+    console.log(this.userSearch);
+    return this.userSearch;
+  }
     
       createNewClient(newClient: Client) {
         this.clients.push(newClient);
@@ -84,5 +81,7 @@ export class UserService {
           this.saveClients();
           this.emitClients();
         }
+
       }
+      
       

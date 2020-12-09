@@ -41,7 +41,7 @@ export class AuthService {
     firebase.auth().signOut();
   }
 
-  getCurrentUserId(): string{
-    return firebase.auth().currentUser.uid;
+  getCurrentUserEmail(): string{
+    return firebase.auth().currentUser.email;
   }
 }

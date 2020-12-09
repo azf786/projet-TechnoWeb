@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MyAccountComponent implements OnInit {
 
-  laptopForm: FormGroup;
+  clientForm: FormGroup;
   client: Client;
 
   constructor(private formBuilder: FormBuilder,
@@ -22,18 +22,15 @@ export class MyAccountComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userService.getClients();
+    this.userService.getSingleClient(this.authService.getCurrentUserEmail());
+    this.client = this.userService.userSearch;
     this.initForm();
-    this.client = new Client("", "", "", "", "",null,"","",this.client.email);
-    this.userService.getSingleClient(this.client.email).then(
-      (client: Client) => {
-        this.client = client;
-      }
-    );
+    console.log(this.client);
   }
 
   initForm() {
-    this.userService.getClients();
-    this.laptopForm = this.formBuilder.group( {
+    this.clientForm = this.formBuilder.group( {
       nom: [this.client.nom, Validators.required],
       prenom: [this.client.prenom, Validators.required],
       telephone: [this.client.prenom, Validators.required],
@@ -46,14 +43,14 @@ export class MyAccountComponent implements OnInit {
   }
 
   onUpdateClient() {
-    const nom = this.laptopForm.get('nom').value;
-    const prenom = this.laptopForm.get('prenom').value;
-    const telephone = this.laptopForm.get('telephone').value;
-    const rue = this.laptopForm.get('rue').value;
-    const nomRue = this.laptopForm.get('nomRue').value;
-    const codePostal = this.laptopForm.get('codePostal').value;
-    const ville = this.laptopForm.get('ville').value;
-    const complement = this.laptopForm.get('complement').value;
+    const nom = this.clientForm.get('nom').value;
+    const prenom = this.clientForm.get('prenom').value;
+    const telephone = this.clientForm.get('telephone').value;
+    const rue = this.clientForm.get('rue').value;
+    const nomRue = this.clientForm.get('nomRue').value;
+    const codePostal = this.clientForm.get('codePostal').value;
+    const ville = this.clientForm.get('ville').value;
+    const complement = this.clientForm.get('complement').value;
     this.userService.updateClient(nom,prenom,telephone,rue,nomRue,codePostal,ville,complement,this.client.email);
   }
 

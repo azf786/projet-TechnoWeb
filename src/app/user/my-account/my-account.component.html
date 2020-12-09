@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <h2>Mon Compte</h2>
-            <form [formGroup]="laptopForm" (ngSubmit)="onUpdateClient()">
+            <form [formGroup]="clientForm" (ngSubmit)="onUpdateClient()">
                 <div class="form-group">
                     <label for="nom">Nom</label>
                     <input type="text" class="form-control" id="nom" formControlName="nom">
