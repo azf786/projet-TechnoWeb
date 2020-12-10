@@ -18,7 +18,7 @@ export class ProduitFormComponent implements OnInit {
   fileUploaded = false;
 
   cpus = ['i7', 'i5', 'AMD R Series', 'i3'];
-  gpus = ['Neo', 'AMD', 'NVIDIA GeForce GTX 1660Ti', 'NVIDIA GeForce GTX 1650 Ti', 'Intel® Iris® Plus', 'Intel HD Graphics 620'];
+  gpus = ['Neo', 'AMD', 'NVIDIA GeForce GTX 1660Ti', 'NVIDIA GeForce GTX 1650 Ti', 'Intel® Iris® Plus', 'Intel HD Graphics 620', 'NVIDIA GeForce RTX 2070'];
   typePorts = ['USB 2.0', 'USB 3.0', 'c'];
   tailleEcrans = ['17.3', '15.6', '15', '13'];
   constructor(private formBuilder: FormBuilder,
