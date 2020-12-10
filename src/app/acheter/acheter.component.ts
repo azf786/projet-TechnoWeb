@@ -83,4 +83,7 @@ export class AcheterComponent implements OnInit, OnDestroy {
     return this.panierService.total();
   }
 
+  commander() {
+    this.router.navigate(['/produits', 'acheter', 'commandeValide']);
+  }
 }

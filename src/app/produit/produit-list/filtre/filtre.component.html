@@ -42,10 +42,10 @@
         </div>
       </div>
     </div>
-    <div class="col" >
-      <h5> Taille Ecran </h5>
-      <div class="text-left list" style="margin-left: 98px">
-        <div class="row" *ngFor="let taille of tailleEcran">
+    <div class="col">
+      <h5> Taille Ecran</h5>
+      <div class="text-left list" style="margin-left: 95px">
+        <div class="row" *ngFor="let taille of taillesEcran">
           <input type="checkbox" value="{{taille}}" (change)="tailleEcranChange($event)">
           <label>{{taille}}</label>
         </div>

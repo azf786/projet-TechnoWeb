@@ -22,9 +22,9 @@ import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { SingleProduitComponent } from './produit/single-produit/single-produit.component';
 import { FiltreComponent } from './produit/produit-list/filtre/filtre.component';
 import { MyAccountComponent } from './user/my-account/my-account.component';
-//import {CarteCreditComponent} from './acheter/carte-credit/carte-credit.component';
 import {AcheterComponent} from './acheter/acheter.component';
 import {PanierService} from './services/panier-service.service';
+import { CommandeValideComponent } from './acheter/commande-valide/commande-valide.component';
 
 
 const appRoutes: Routes = [
@@ -36,6 +36,7 @@ const appRoutes: Routes = [
   {path: 'produits/view/:id', component: SingleProduitComponent},
   {path: 'auth/signin', component: SigninComponent},
   {path: 'produits/acheter', component: AcheterComponent},
+  {path: 'produits/acheter/commandeValide', component: CommandeValideComponent},
   {path: 'user/myAccount', component: MyAccountComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
@@ -55,8 +56,8 @@ const appRoutes: Routes = [
     HomeComponent,
     SingleProduitComponent,
     FiltreComponent,
-    //CarteCreditComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    CommandeValideComponent
   ],
   imports: [
     CommonModule,

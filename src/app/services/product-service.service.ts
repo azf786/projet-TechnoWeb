@@ -22,9 +22,13 @@ export class ProductService {
 
   tailleEcransComplet: number[] = [];
 
+
+
   cpus: string[] = this.cpusComplet;
   marques: string[] = this.marquesComplet;
-  tailleEcrans: number[] = this.tailleEcransComplet;
+  taillesEcran: number[] = this.tailleEcransComplet;
+
+
   prixInf = -1;
   prixSup = -1;
 
@@ -37,7 +41,7 @@ export class ProductService {
   emitLaptopsSearch() {
     this.laptopSearchSubject.next(this.laptopsSearch);
   }
-  
+
   saveLaptops() {
     firebase.database().ref('/laptops').set(this.laptops);
   }
@@ -54,9 +58,10 @@ export class ProductService {
           this.marquesComplet.push(this.laptops[i].marque);
         }
 
-        if (this.tailleEcransComplet.indexOf(this.laptops[i].tailleEcran, 0) === -1){
+        if (this.tailleEcransComplet.indexOf(this.laptops[i].tailleEcran, 0) === -1) {
           this.tailleEcransComplet.push(this.laptops[i].tailleEcran);
         }
+        console.log(this.tailleEcransComplet);
       }
       for (let i = 0; i < this.laptops.length; i++) {
         this.laptopsSearch.push(this.laptops[i]);
@@ -67,18 +72,6 @@ export class ProductService {
   }
 
   getSingleLaptop(id: number) {
-    /*return new Promise(
-      (resolve, reject) => {
-        firebase.database().ref('/laptops/' + id).once('value').then(
-          (data) => {
-            resolve(data.val());
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      }
-    );*/
     return this.laptopsSearch[id];
   }
 
@@ -186,18 +179,15 @@ export class ProductService {
   }
 
   addTailleEcran(value: number) {
-    if (this.tailleEcrans.length === this.tailleEcransComplet.length){
-      this.tailleEcrans = [];
+    if (this.taillesEcran.length === this.tailleEcransComplet.length) {
+      this.taillesEcran = [];
     }
-    this.tailleEcrans.push(value);
+    this.taillesEcran.push(value);
     this.update();
   }
 
   removeTailleEcran(value: number) {
-    this.tailleEcrans.splice(this.tailleEcrans.indexOf(value, 0), 1);
-    if (this.tailleEcrans.length === 0){
-      this.tailleEcrans = this.tailleEcransComplet;
-    }
+    this.taillesEcran.splice(this.taillesEcran.indexOf(value, 0), 1);
     this.update();
   }
 
@@ -236,15 +226,24 @@ export class ProductService {
     this.emitLaptopsSearch();
   }
 
+  marque_pas_est_dans_la_liste(i: number) {
+    return this.marques.indexOf(this.laptops[i].marque, 0) === -1;
+  }
+
+  cpu_pas_est_dans_la_liste(i: number) {
+    return this.cpus.indexOf(this.laptops[i].cpu, 0) === -1;
+  }
+  taille_est_pas_dans_la_liste(i: number) {
+    return this.taillesEcran.indexOf(this.laptops[i].tailleEcran, 0) === -1;
+  }
+
+
   private nonConforme(i: number) {
-    return this.marques.indexOf(this.laptops[i].marque, 0) === -1 ||
-      this.cpus.indexOf(this.laptops[i].cpu, 0) === -1 ||
-      this.tailleEcrans.indexOf(this.laptops[i].tailleEcran, 0) === -1 ||
+    return this.marque_pas_est_dans_la_liste(i) ||
+       this.cpu_pas_est_dans_la_liste(i) ||
+      this.taille_est_pas_dans_la_liste(i) ||
       this.prixEstInf(this.laptops[i].prix) ||
       this.prixEstSup(this.laptops[i].prix);
   }
 
-  updateSearch() {
-
-  }
 }

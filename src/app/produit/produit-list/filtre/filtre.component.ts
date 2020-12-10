@@ -13,7 +13,9 @@ export class FiltreComponent implements OnInit {
 
   cpus: string[];
   marques: string[];
-  tailleEcran: number[];
+  taillesEcran: number[];
+
+
 
   prixForm: FormGroup;
 
@@ -23,7 +25,7 @@ export class FiltreComponent implements OnInit {
   ngOnInit(): void {
     this.cpus = this.productService.cpusComplet;
     this.marques = this.productService.marquesComplet;
-    this.tailleEcran = this.productService.tailleEcransComplet;
+    this.taillesEcran = this.productService.tailleEcransComplet;
     this.prixForm = this.formBuilder.group( {
       prixInf: [''],
       prixSup: ['']
@@ -58,14 +60,7 @@ export class FiltreComponent implements OnInit {
     }
   }
 
-  tailleEcranChange(event){
-    if (event.target.checked) {
-      this.productService.addTailleEcran(event.target.value);
-    }
-    if (!event.target.checked) {
-      this.productService.removeTailleEcran(event.target.value);
-    }
-  }
+
 
   prixChange() {
     const prixInf = this.prixForm.get('prixInf').value;
@@ -75,4 +70,29 @@ export class FiltreComponent implements OnInit {
     this.productService.prixSup = prixSup;
     this.productService.update();
   }
+
+  tailleEcranChange(event) {
+    if (event.target.checked) {
+      this.productService.addTailleEcran(event.target.value);
+    }
+    if (!event.target.checked) {
+      this.productService.removeTailleEcran(event.target.value);
+    }
+  }
 }
+
+
+
+
+
+
+
+
+/*tailleEcranChange(event){
+  if (event.target.checked) {
+    this.productService.addTailleEcran(event.target.value);
+  }
+  if (!event.target.checked) {
+    this.productService.removeTailleEcran(event.target.value);
+  }
+}*/
