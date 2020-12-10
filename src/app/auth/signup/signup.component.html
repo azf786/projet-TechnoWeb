@@ -5,16 +5,16 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
-                <p *ngIf="signUp.get('email').invalid" style="color: red; font-size: 15px">Donner un email vailid</p>
+                <p *ngIf="signUp.get('email').invalid" style="color: red; font-size: 15px">Donner un email valide</p>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
-                <p *ngIf="signUp.get('password').invalid" style="color: red; font-size: 15px">le mot de passe doit
-                  contenir au moins une majiscule, un caractère spécial(&,@,#,.....) et un nombre </p>
+                <p *ngIf="signUp.get('password').invalid" style="color: red; font-size: 15px">Le mot de passe doit
+                  contenir au moins une majuscule, un caractère spécial(&,@,#,.....) et un nombre </p>
             </div>
           <div class="form-group">
-            <label for="confirmPwd">Confirmer password</label>
+            <label for="confirmPwd">Confirmer mot de passe</label>
             <input type="password" id="confirmPwd" class="form-control" formControlName="confirmPwd">
             <p *ngIf="confirmPassword()" style="color: red; font-size: 15px">Les deux mots de passe doivent être les même</p>
           </div>
