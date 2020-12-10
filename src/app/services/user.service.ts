@@ -1,87 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import{Client} from 'src/app/models/Client.model';
+import {Client} from 'src/app/models/Client.model';
 import firebase from 'firebase/app';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  
-  clients: Client[] = [];
-  clientCourant: Client;
-  noms: string[] = [];
-  prenoms: string[] = [];
-  telephones: string[] = [];
-  rues: string[] = [];
-  nomRues: string[] = [];
-  codePostaux: string[] = [];
-  villes: string[] = [];
-  complements: string[] = [];
-  ids: string[] = [];
-  userSubject = new Subject<Client[]>();
-  userSearch: Client;
-  
-  constructor(authService : AuthService) {}
-  
+
+  client: Client;
+  clientSubject = new Subject<Client>();
+
+
+  constructor() { }
+
   emitClients() {
-    this.userSubject.next(this.clients);
+    this.clientSubject.next(this.client);
   }
-  
-  saveClients() {
-    firebase.database().ref('/clients').set(this.clients);
+
+  saveClients(email: string) {
+    const ref = '/clients/' + email.replace('.', '_');
+    firebase.database().ref(ref).set(this.client);
   }
-  
-  getClients() {
-    firebase.database().ref('/clients').on('value', (data) => {
-      this.clients = data.val() ? data.val() : [];
+
+  getUser(email: string) {
+    firebase.database().ref('/clients/' + email.replace('.', '_')).on('value', (data) => {
+      this.client = new Client(data.val().nom, data.val().prenom, data.val().telephone, data.val().rue, data.val().nomRue,
+        data.val().codePostal, data.val().ville, data.val().complement, data.val().email);
+      console.log(this.client);
       this.emitClients();
     });
   }
-  
-  getSingleClient(email: string) : Client {
-    for (let i = 0; i < this.clients.length; i++) {
-      if (this.clients[i].email == email) {
-        this.userSearch = this.clients[i];
-      }
-    }
-    console.log(this.userSearch);
-    return this.userSearch;
-  }
-    
-      createNewClient(newClient: Client) {
-        this.clients.push(newClient);
-        this.saveClients();
-        this.emitClients();
-      }
-      
-      removeClient(client: Client) {
-        const clientIndexToRemove = this.clients.findIndex(
-          (client) => {
-            return true;
-          }
-          );
-          this.clients.splice(clientIndexToRemove, 1);
-          this.saveClients();
-          this.emitClients();
-        }
-        
-        updateClient(nom: string,prenom: string,telephone: string,rue: string,nomRue: string,codePostal: string,ville: string,complement: string,email: string){
-          firebase.database().ref('/clients/' + email).set({
-            prenom: prenom,
-            nom: nom,
-            telephone: telephone,
-            rue: rue,
-            nomRue: nomRue,
-            codePostal: codePostal,
-            ville: ville,
-            complement: complement,
-          });
-          this.saveClients();
-          this.emitClients();
-        }
 
-      }
-      
-      
+  createNewClient(newClient: Client) {
+    this.client = newClient;
+    this.saveClients(newClient.email);
+    this.emitClients();
+  }
+
+}

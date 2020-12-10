@@ -11,9 +11,11 @@
                 <input type="password" id="password" class="form-control" formControlName="password">
             </div>
             <div class="text-center">
-                <button class="btn btn-primary btn text-center" type="submit" [disabled]="signIn.invalid">Connexion</button>
+              <button class="btn btn-primary btn text-center" type="submit" [disabled]="signIn.invalid">Connexion</button>
+              <button style="margin-left: 10px" class="btn btn-success btn text-center" (click)="signup()">Créer un compte</button>
             </div>
         </form>
+
         <p class="text-danger">{{errorMessage}}</p>
     </div>
 </div>

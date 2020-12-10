@@ -1,19 +1,75 @@
-<div class="pb-5 pt-5" style="background-image: url(assets/images/laptop.jpg);height: 1000px">
+<div class="pb-5 pt-5" style="background-image: url(assets/images/laptop.jpg);height: 1000px" *ngIf="onEmail">
     <div class="col-sm-5 mx-auto card mt-5">
         <h2 class="text-center"> Créer un compte</h2>
-        <form [formGroup]="signUp" (ngSubmit)="onSubmit()">
+        <form [formGroup]="signUp" (ngSubmit)="onSubmitEmail()">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" id="email" class="form-control" formControlName="email">
+                <p *ngIf="signUp.get('email').invalid" style="color: red; font-size: 15px">Donner un email vailid</p>
             </div>
             <div class="form-group">
-                <label for="password">Mot de passe</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" class="form-control" formControlName="password">
+                <p *ngIf="signUp.get('password').invalid" style="color: red; font-size: 15px">le mot de passe doit
+                  contenir au moins une majiscule, un caractère spécial(&,@,#,.....) et un nombre </p>
             </div>
+          <div class="form-group">
+            <label for="confirmPwd">Confirmer password</label>
+            <input type="password" id="confirmPwd" class="form-control" formControlName="confirmPwd">
+            <p *ngIf="confirmPassword()" style="color: red; font-size: 15px">Les deux mots de passe doivent être les même</p>
+          </div>
             <div class="text-center">
-                <button class="btn btn-primary btn text-center" type="submit" [disabled]="signUp.invalid">Créer mon compte</button>
+              <button class="btn btn-primary btn text-center" type="submit" [disabled]="signUp.invalid || confirmPassword()">Continuer</button>
             </div>
         </form>
         <p class="text-danger">{{errorMessage}}</p>
     </div>
+</div>
+
+<div class="pb-5 pt-5" style="background-image: url(assets/images/laptop.jpg);height: 1000px" *ngIf="!onEmail">
+  <div class="col-sm-5 mx-auto card mt-5">
+    <h2 class="text-center"> Informations</h2>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input type="text" class="form-control" id="nom" formControlName="nom">
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="prenom" formControlName="prenom">
+      </div>
+      <div class="form-group">
+        <label for="telephone">Télephone</label>
+        <input type="text" class="form-control" id="telephone" formControlName="telephone">
+      </div>
+      <div class="row">
+        <div class="form-group col-2">
+          <label for="rue">Rue</label>
+          <input type="number" class="form-control" id="rue" formControlName="rue">
+        </div>
+        <div class="form-group col-10">
+          <label for="nomRue">Nom de la rue</label>
+          <input type="text" class="form-control" id="nomRue" formControlName="nomRue">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col">
+          <label for="codePostal">Code Postal</label>
+          <input type="number" class="form-control" id="codePostal" formControlName="codePostal">
+        </div>
+        <div class="form-group col">
+          <label for="ville">Ville</label>
+          <input type="text" class="form-control" id="ville" formControlName="ville">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="complement">Complément</label>
+        <input type="text" class="form-control" id="complement" formControlName="complement">
+      </div>
+      <div class="text-right">
+        <button class="btn btn-success" type="submit" [disabled]="clientForm.invalid">Enregistrer</button>
+      </div>
+    </form>
+    <p class="text-danger">{{errorMessage}}</p>
+  </div>
 </div>
