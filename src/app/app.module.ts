@@ -29,6 +29,7 @@ import {PanierService} from './services/panier-service.service';
 
 const appRoutes: Routes = [
   {path: 'auth/signup', component: SignupComponent},
+  {path: 'creerCompte', component: MyAccountComponent},
   {path: 'auth/signin', component: SigninComponent},
   {path: 'produits/listProduits', component: ProduitListComponent},
   {path: 'produits/new', component: ProduitFormComponent},

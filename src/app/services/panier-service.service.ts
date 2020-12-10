@@ -27,6 +27,12 @@ export class PanierService {
   }*/
 
   ajouterAuPanier(laptop: Laptop, quantity: number) {
+    for (let i = 0; i < this.produitsPanier.length; i++) {
+      if (this.produitsPanier[i].laptop.serie === laptop.serie) {
+        this.produitsPanier[i].quantity += quantity;
+        return;
+      }
+    }
     this.produitsPanier.push(new ProduitPanier(laptop, quantity));
     this.emitPanier();
   }

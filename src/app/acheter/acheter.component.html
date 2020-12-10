@@ -44,17 +44,118 @@
           </div>
         </div>
       </div>
-      <div class="col-3 text-right" style="margin-top: 20px">
-        <div class="text-center">
+      <div class="col-3 text-right" style="margin-top: 20px" *ngIf="produitsPanier.length !== 0">
+        <div class="text-center" style="margin: 20px; border-style: outset">
           <h3>Récapulatif</h3>
           <div class="text-center">
             <p *ngFor="let produit of produitsPanier; let i = index">{{produit.quantity}} x {{produit.laptop.model}} .......
               {{produit.quantity*produit.laptop.prix}}</p>
             <hr>
-            <p style="font-size: 30px"><strong style="color: red; font-size: 30px">Total</strong>    {{getTotal()}}</p>
+            <p style="font-size: 30px"><strong style="color: red; font-size: 30px">Total:</strong>    {{getTotal()}}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="row" style="margin-left: 10%" *ngIf="client && produitsPanier.length !== 0">
+    <div class="col-sm-5  mt-5 text-center" style="background-color: transparent; margin: 20px" *ngIf="client">
+      <h2 class="text-left"> Livraison</h2>
+      <form [formGroup]="livraisonForm" >
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom" value="{{client.nom}}" formControlName="nom">
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input type="text" class="form-control" id="prenom" value="{{client.prenom}}" formControlName="prenom">
+        </div>
+        <div class="form-group">
+          <label for="telephone">Télephone</label>
+          <input type="text" class="form-control" id="telephone" value="{{client.telephone}}" formControlName="telephone">
+        </div>
+        <div class="row">
+          <div class="form-group col-2">
+            <label for="rue">Rue</label>
+            <input type="number" class="form-control" id="rue" value="{{client.rue}}" formControlName="rue">
+          </div>
+          <div class="form-group col-10">
+            <label for="nomRue">Nom de la rue</label>
+            <input type="text" class="form-control" id="nomRue" value="{{client.nomRue}}" formControlName="nomRue">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="codePostal">Code Postal</label>
+            <input type="number" class="form-control" id="codePostal" value="{{client.codePostal}}" formControlName="codePostal">
+          </div>
+          <div class="form-group col">
+            <label for="ville">Ville</label>
+            <input type="text" class="form-control" id="ville" value="{{client.ville}}" formControlName="ville">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="complement">Complément</label>
+          <input type="text" class="form-control" id="complement" value="{{client.complement}}" formControlName="complement">
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-5  mt-5 text-left" style="background-color: transparent; margin: 20px; padding-top: 5%" *ngIf="client">
+      <div class="bg-white rounded-lg shadow-sm p-5">
+        <!-- Credit card form tabs -->
+        <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
+          <li class="nav-item">
+            <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
+              <i class="fa fa-credit-card"></i>
+              Carte Bleue
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div id="nav-tab-card" class="tab-pane fade show active">
+            <form role="form">
+              <div class="form-group">
+                <label for="username">Nom sur la carte</label>
+                <input type="text" id="username" name="username" placeholder="Mathieu Zani" required class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="cardNumber">Numéro de carte</label>
+                <div class="input-group">
+                  <input type="text" id="cardNumber" name="cardNumber" placeholder="Votre numéro de carte" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text text-muted">
+                      <i class="fa fa-cc-visa mx-1"></i>
+                      <i class="fa fa-cc-amex mx-1"></i>
+                      <i class="fa fa-cc-mastercard mx-1"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <div class="form-group">
+                    <label><span class="hidden-xs">Date expiration</span></label>
+                    <div class="input-group">
+                      <input type="number" placeholder="MM" name="" class="form-control" required>
+                      <input type="number" placeholder="YY" name="" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group mb-4">
+                    <label data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
+                      <i class="fa fa-question-circle"></i>
+                    </label>
+                    <input type="text" required class="form-control">
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirmer  </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
