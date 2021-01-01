@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
             this.clientSubscription = this.userService.clientSubject.subscribe(
               (client: Client) => {
                 this.client = client;
-                console.log(this.client);
               }
             );
             this.userService.getUser(firebase.auth().currentUser.email);
@@ -43,14 +42,15 @@ export class HeaderComponent implements OnInit {
           }
         }
       );
-      console.log('enter' + this.isAuth);
       if (this.isAuth) {
 
       }
   }
 
-  onSignOut(){
-    this.authService.signOutUser();
+
+
+  toClient() {
+    this.router.navigate(['/client']);
   }
 
   rechercher() {

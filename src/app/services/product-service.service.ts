@@ -72,7 +72,19 @@ export class ProductService {
   }
 
   getSingleLaptop(id: number) {
-    return this.laptopsSearch[id];
+    // return this.laptops[id];
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref('/laptops/' + id).once('value').then(
+          (data) => {
+            resolve(data.val());
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
   }
 
   createNewLaptop(newLaptop: Laptop) {

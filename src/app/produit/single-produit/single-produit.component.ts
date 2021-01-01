@@ -25,12 +25,13 @@ export class SingleProduitComponent implements OnInit, OnDestroy {
   ngOnInit(){
     this.laptop = new Laptop('', '', '', '', '', '', '', '', '', null, null, '', null, '', null, null, null, null, null, null);
     const id = this.route.snapshot.params.id;
-    /*this.productService.getSingleLaptop(+id).then(
+    this.productService.getSingleLaptop(+id).then(
       (laptop: Laptop) => {
         this.laptop = laptop;
       }
-    );*/
-    this.laptop = this.productService.getSingleLaptop(this.route.snapshot.params.id);
+    );
+
+    // this.laptop = this.productService.getSingleLaptop(this.route.snapshot.params.id);
   }
 
   onBack(){

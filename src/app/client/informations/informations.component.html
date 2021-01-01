@@ -1,0 +1,41 @@
+<div style="padding: 50px; border-style: solid; margin-top: 100px; margin-right: 50px">
+  <form [formGroup]="livraisonForm" >
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" class="form-control" id="nom" value="{{client.nom}}" formControlName="nom">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" class="form-control" id="prenom" value="{{client.prenom}}" formControlName="prenom">
+    </div>
+    <div class="form-group">
+      <label for="telephone">Télephone</label>
+      <input type="text" class="form-control" id="telephone" value="{{client.telephone}}" formControlName="telephone">
+    </div>
+    <div class="row">
+      <div class="form-group col-2">
+        <label for="rue">Rue</label>
+        <input type="number" class="form-control" id="rue" value="{{client.rue}}" formControlName="rue">
+      </div>
+      <div class="form-group col-10">
+        <label for="nomRue">Nom de la rue</label>
+        <input type="text" class="form-control" id="nomRue" value="{{client.nomRue}}" formControlName="nomRue">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col">
+        <label for="codePostal">Code Postal</label>
+        <input type="number" class="form-control" id="codePostal" value="{{client.codePostal}}" formControlName="codePostal">
+      </div>
+      <div class="form-group col">
+        <label for="ville">Ville</label>
+        <input type="text" class="form-control" id="ville" value="{{client.ville}}" formControlName="ville">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="complement">Complément</label>
+      <input type="text" class="form-control" id="complement" value="{{client.complement}}" formControlName="complement">
+    </div>
+  </form>
+</div>
+

@@ -25,6 +25,11 @@ import { MyAccountComponent } from './user/my-account/my-account.component';
 import {AcheterComponent} from './acheter/acheter.component';
 import {PanierService} from './services/panier-service.service';
 import { CommandeValideComponent } from './acheter/commande-valide/commande-valide.component';
+import {CommandeService} from './services/commande-service.service';
+import { ClientComponent } from './client/client.component';
+import { CommandesComponent } from './client/commandes/commandes.component';
+import { CommandeComponent } from './client/commandes/commande/commande.component';
+import { InformationsComponent } from './client/informations/informations.component';
 
 
 const appRoutes: Routes = [
@@ -38,6 +43,7 @@ const appRoutes: Routes = [
   {path: 'produits/acheter', component: AcheterComponent},
   {path: 'produits/acheter/commandeValide', component: CommandeValideComponent},
   {path: 'user/myAccount', component: MyAccountComponent},
+  {path: 'client', component: ClientComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'home',pathMatch:'full'},
   {path: '**', redirectTo: 'home'}
@@ -57,7 +63,11 @@ const appRoutes: Routes = [
     SingleProduitComponent,
     FiltreComponent,
     MyAccountComponent,
-    CommandeValideComponent
+    CommandeValideComponent,
+    ClientComponent,
+    CommandesComponent,
+    CommandeComponent,
+    InformationsComponent
   ],
   imports: [
     CommonModule,
@@ -75,6 +85,7 @@ const appRoutes: Routes = [
     AuthGuardService,
     PanierService,
     UserService,
+    CommandeService,
   ],
   bootstrap: [AppComponent]
 })

@@ -61,4 +61,8 @@ export class PanierService {
     // const panierUser = '/' + firebase.auth().currentUser.email.replace('.', '_') + '_panier';
     // firebase.database().ref(panierUser).set(this.produitsPanier);
   }
+
+  viderPanier() {
+    this.produitsPanier = [];
+  }
 }

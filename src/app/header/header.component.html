@@ -25,7 +25,7 @@
               </button>
             </li>
             <li class="nav-item" *ngIf="isAuth">
-              <button (click)="onSignOut()" class="nav-link navbar-link-2 waves-effect"
+              <button (click)="toClient()" class="nav-link navbar-link-2 waves-effect"
                       style="color: #FFCB9A; background-color: transparent; border: #FFCB9A solid">
 
                 <i class="" aria-hidden="true" style="font-size: 20px">{{this.client.nom.substring(0, 1)}}</i>

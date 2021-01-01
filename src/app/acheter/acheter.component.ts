@@ -8,6 +8,9 @@ import {Client} from '../models/Client.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import firebase from 'firebase';
 import {UserService} from '../services/user.service';
+import {CommandeService} from '../services/commande-service.service';
+import {Commande} from '../models/Commande.model';
+import {Achat} from '../models/Achat.model';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class AcheterComponent implements OnInit, OnDestroy {
 
   produitsPanier: ProduitPanier[];
   produitsPanierSubscription: Subscription;
+  commande: Commande;
 
   client: Client;
   clientSubscription: Subscription;
@@ -26,7 +30,7 @@ export class AcheterComponent implements OnInit, OnDestroy {
   livraisonForm: FormGroup;
 
   constructor(private panierService: PanierService, private route: ActivatedRoute, private router: Router,
-              private formBuilder: FormBuilder, private userService: UserService) { }
+              private formBuilder: FormBuilder, private userService: UserService, private commandeService: CommandeService) { }
 
   ngOnInit(): void {
     console.log(this.panierService.produitsPanier);
@@ -45,7 +49,6 @@ export class AcheterComponent implements OnInit, OnDestroy {
           this.clientSubscription = this.userService.clientSubject.subscribe(
             (client: Client) => {
               this.client = client;
-              console.log(this.client);
             }
           );
           this.userService.getUser(firebase.auth().currentUser.email);
@@ -84,6 +87,22 @@ export class AcheterComponent implements OnInit, OnDestroy {
   }
 
   commander() {
+    let date = new Date();
+    this.commande = new Commande(date.toDateString(), '***777');
+
+    for (let i = 0; i < this.produitsPanier.length; i++) {
+      let achat = new Achat();
+      achat.marque = this.produitsPanier[i].laptop.marque;
+      achat.photo = this.produitsPanier[i].laptop.photos[0];
+      achat.model = this.produitsPanier[i].laptop.model;
+      achat.cpu = this.produitsPanier[i].laptop.cpu;
+      achat.prix = this.produitsPanier[i].laptop.prix;
+      achat.quantity = this.produitsPanier[i].quantity;
+      this.commande.achats.push(achat);
+    }
+    console.log(this.commande);
+    this.commandeService.createNewCommandes(this.commande);
+    this.panierService.viderPanier();
     this.router.navigate(['/produits', 'acheter', 'commandeValide']);
   }
 }

@@ -27,7 +27,6 @@ export class UserService {
     firebase.database().ref('/clients/' + email.replace('.', '_')).on('value', (data) => {
       this.client = new Client(data.val().nom, data.val().prenom, data.val().telephone, data.val().rue, data.val().nomRue,
         data.val().codePostal, data.val().ville, data.val().complement, data.val().email);
-      console.log(this.client);
       this.emitClients();
     });
   }

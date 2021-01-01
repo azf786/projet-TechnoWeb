@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-3" style="margin-top: 250px; ">
+    <button style="border: none; background: none" (click)="commandes()">
+      <div style="width: 350px; border-style: solid; text-align: center" [ngClass]="{active:onCommande}">
+        <h3>Commandes</h3>
+      </div>
+    </button>
+    <button style="border: none; background: none" (click)="information()">
+      <div style="width: 350px; border-style: solid; text-align: center; margin-top: 20px" [ngClass]="{active:!onCommande}">
+        <h3>Information</h3>
+      </div>
+    </button>
+    <button style="border: none; background: none" (click)="onSignOut()">
+      <div style="width: 350px; text-align: center; margin-top: 20px">
+        <p style="color: red">Se déconnecter</p>
+      </div>
+    </button>
+  </div>
+  <div class="col-9" *ngIf="onCommande">
+    <app-commandes></app-commandes>
+  </div>
+  <div class="col-9" *ngIf="!onCommande">
+    <app-informations></app-informations>
+  </div>
+</div>
+

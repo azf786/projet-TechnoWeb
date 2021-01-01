@@ -1,0 +1,36 @@
+<div >
+  <div *ngFor="let commande of commandes; let i = index;" style="margin: 10px">
+
+    <div class="row" style="border-style: solid ">
+      <div class="col-4">
+        <p style="font-weight: bold; font-size: medium"> Commande: No. {{i}}</p>
+      </div>
+      <div class="col-4">
+        <p style="font-weight: bold">Date de commande: {{commande.dateAchat}}</p>
+      </div>
+      <div class="col-4">
+        <p style="font-weight: bold"> Total: {{total(i)}} €</p>
+      </div>
+    </div>
+    <div style="border-style: solid; border-top: none; border-left: none; border-right: none ">
+      <div *ngFor="let achat of commande.achats; let i = index" class="row produit" style="border-style: solid;
+      border-top: none; border-bottom: none ">
+        <div class="col-3 text-left" style="">
+          <img src="{{achat.photo}}" style="width: 250px; height: 175px">
+        </div>
+        <div class="col-9 text-left">
+          <div class="row">
+            <div class="col-9">
+              <p> <strong>Marque:</strong> {{achat.marque}}</p>
+              <p> <strong>Model:</strong> {{achat.model}}</p>
+              <p> <strong>CPU:</strong> {{achat.cpu}}</p>
+            </div>
+            <div class="col-3 text-right">
+              <h3 style="font-size: 30px; color: red">{{achat.prix}} €</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
