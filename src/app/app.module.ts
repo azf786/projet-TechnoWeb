@@ -67,7 +67,7 @@ const appRoutes: Routes = [
     ClientComponent,
     CommandesComponent,
     CommandeComponent,
-    InformationsComponent
+    InformationsComponent,
   ],
   imports: [
     CommonModule,
